@@ -12,39 +12,9 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-int countLen(struct TreeNode* root)
-{
-    if(!root)
-        return 0;
-    if(root->left){
-        return 1 + countLen(root->left);
-    }
-    return 1;
-}
-
 int countNodes(struct TreeNode* root){
-    int n = 0;
-    if(!root)
-        return n;
-    else
-        n++;
-    struct TreeNode *cur = root;
-    while(1){
-        int left = countLen(cur->left);
-        int right = countLen(cur->right);
-        if(left==0 && right==0)
-            return n;
-        if(left > right){
-            n = 2 * n;
-            cur = cur->left;
-            continue;
-        }
-        else{
-            n = 2 * n + 1;
-            cur = cur->right;
-            continue;
-        }
-    }
+    if(!root) return 0;
+    return (countNodes(root->left)+countNodes(root->right)+1);
 }
 
 int main()
