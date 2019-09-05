@@ -6,7 +6,7 @@
 
 extern float timeuse_count(struct timeval start, struct timeval end);
 
-int main() 
+int main()
 {
     struct timeval start, end;
 
